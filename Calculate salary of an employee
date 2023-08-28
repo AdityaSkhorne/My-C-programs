@@ -1,0 +1,58 @@
+// A program to calculate the salary of an employee based on their gender, years of service and qualification
+
+#include <stdio.h>
+
+int main()
+{
+    // Declare variables
+    char name[20], gender, degree;
+    int years;
+    float salary, base, bonus;
+
+    // Get input from user
+    printf("Enter employee name: ");
+    scanf("%s", name);
+    printf("Enter employee gender (M/F): ");
+    scanf(" %c", &gender);
+    printf("Enter employee degree (B/M): ");
+    scanf(" %c", &degree);
+    printf("Enter employee years of service: ");
+    scanf("%d", &years);
+
+    // Validate input
+    if (gender != 'M' && gender != 'F')
+    {
+        printf("Invalid gender input\n");
+        return 1;
+    }
+    if (degree != 'B' && degree != 'M')
+    {
+        printf("Invalid degree input\n");
+        return 1;
+    }
+    if (years < 0 || years > 10)
+    {
+        printf("Invalid years of service input\n");
+        return 1;
+    }
+
+    // Calculate salary based on formula
+    if (gender == 'M')
+        base = 50000;
+    else
+        base = 55000;
+
+    if (degree == 'M')
+        bonus = 0.1 * base;
+    else
+        bonus = 0;
+
+    bonus += 0.05 * base * years;
+
+    salary = base + bonus;
+
+    // Display output
+    printf("The salary of %s is %.2f\n", name, salary);
+
+    return 0;
+}
