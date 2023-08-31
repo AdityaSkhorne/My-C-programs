@@ -1,0 +1,10 @@
+#include<stdio.h>
+int main()
+{
+    int a=10,b=12,c=0,x;
+    x=9||b<3; // x will be 1 because both conditions are true
+    printf("x = %d\n", x); // print the value of x
+    scanf("%d",&x); // read an integer from the user and store it in x
+    printf("You entered %d\n", x); // print the user input
+    return 0;
+}
