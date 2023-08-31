@@ -1,0 +1,87 @@
+// Include math.h library to perform some mathematical operations such as square root
+#include <math.h>
+// Include stdio.h library to perform some input/output operations such as printf and scanf
+#include <stdio.h>
+// Include stdbool.h library to use boolean data type and values
+#include <stdbool.h>
+
+// Define a structure to store the roots of a quadratic equation
+struct roots {
+    double root1; // First root
+    double root2; // Second root
+    bool complex; // Flag to indicate if the roots are complex or not
+};
+
+// Declare a function that takes the coefficients of a quadratic equation as parameters
+// and returns the roots as a structure
+struct roots find_roots(double a, double b, double c);
+
+// Define the main function
+int main() {
+    // Declare variables to store the coefficients and the roots
+    double a, b, c;
+    struct roots r;
+    // Declare a variable to store the user's choice to continue or exit the program
+    char choice;
+    // Use a do-while loop to repeat the program until the user enters 'N' or 'n'
+    do {
+        // Ask the user to enter the coefficients of a quadratic equation
+        printf("Enter coefficients a, b and c: ");
+        // Read the input from the user using scanf function
+        scanf("%lf %lf %lf", &a, &b, &c);
+        // Call the find_roots function with the input values and store the result in r
+        r = find_roots(a, b, c);
+        // Check if the roots are complex or not using r.complex flag
+        if (r.complex) {
+            // If complex, print the roots in the form of real part + imaginary part * i
+            printf("The roots are: %.2lf + %.2lfi and %.2lf - %.2lfi\n", r.root1, r.root2, r.root1, r.root2);
+        }
+        else {
+            // If real, print the roots normally
+            printf("The roots are: %.2lf and %.2lf\n", r.root1, r.root2);
+        }
+        // Ask the user if they want to continue or exit the program
+        printf("Do you want to continue? (Y/N): ");
+        // Read the input from the user using getchar function
+        choice = getchar();
+        // Ignore any extra characters in the input buffer
+        while (getchar() != '\n');
+    } while (choice == 'Y' || choice == 'y'); // Repeat if choice is 'Y' or 'y'
+    // Exit the program with 0 status code
+    return 0;
+}
+
+// Define the find_roots function that takes three double parameters and returns a structure
+struct roots find_roots(double a, double b, double c) {
+    // Declare a variable of type struct roots to store and return the result
+    struct roots result;
+    // Declare a variable to store the discriminant of the quadratic equation
+    double discriminant;
+    // Calculate the discriminant using the formula b^2 - 4ac
+    discriminant = b * b - 4 * a * c;
+    // Check if the discriminant is positive, zero or negative
+    if (discriminant > 0) {
+        // If positive, calculate the two distinct real roots using the quadratic formula with plus and minus signs
+        result.root1 = (-b + sqrt(discriminant)) / (2 * a);
+        result.root2 = (-b - sqrt(discriminant)) / (2 * a);
+        // Set the complex flag to false
+        result.complex = false;
+    }
+    else if (discriminant == 0) {
+        // If zero, calculate the one repeated real root using the quadratic formula or by simplifying it to -b / 2a
+        result.root1 = result.root2 = -b / (2 * a);
+        // Set the complex flag to false
+        result.complex = false;
+    }
+    else {
+        // If negative, calculate the two complex conjugate roots using the quadratic formula with plus and minus signs
+        // and using the imaginary unit i to represent the square root of a negative number
+        // The complex roots have a real part and an imaginary part, which are given by -b / 2a and sqrt(-discriminant) / 2a respectively
+        result.root1 = -b / (2 * a);
+        result.root2 = sqrt(-discriminant) / (2 * a);
+        // Set the complex flag to true
+        result.complex = true;
+    }
+    // Return the result structure
+    return result;
+}
