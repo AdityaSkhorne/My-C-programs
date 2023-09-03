@@ -1,0 +1,22 @@
+//Program to find appropriate level of intelligence of people 
+#include<stdio.h>
+int main()
+{
+    float i,x,y;
+    printf("Enter value for x and y: ");
+    scanf("%f %f",&x,&y);
+    // print the header of the table
+    printf("|%5s|%5s|%35s|\n", "x", "y", "The approximate level of intelligence");
+    // print a separator line
+    printf("|-----|-----|-----------------------------------|\n");
+    for(y=1; y<=6; y++)
+    {
+       for(x=5.5;x<=12.5;x+=0.5)
+       {
+         // print a row of the table with x, y, and i values
+         i=2+(y+0.5*x);
+         printf("|%5.1f|%5.1f|%35.2f|\n", x, y, i);
+       }
+    }
+    return 0;
+}
