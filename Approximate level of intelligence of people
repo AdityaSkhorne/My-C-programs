@@ -1,0 +1,21 @@
+//write a program to calculate approximate level of intelligence of people 
+#include<stdio.h>
+int main()
+{
+    
+    float i,x,y;
+    printf("enter value for x and y:- ");
+    scanf("%f %f",&x,&y);
+    for(y=1; y<=6; y++)
+    {
+       for(x=5.5;x<=12.5;x+=0.5)
+       {
+         printf("the approximate level of intelligence of a person is:- :- \n");
+         i=2+(y+0.5*x);
+         printf("%f\n",i);
+       }
+    }
+    
+
+    return 0;
+}
