@@ -1,0 +1,17 @@
+//Generate all possible combinations of given numbers
+#include<stdio.h>
+int main()
+{
+    int i,j,k;
+    printf("enter values for i,j,k:- ");
+    scanf("%d%d\n",&i,&j,&k);
+    for(i; i<=5; i++)
+    {
+        for(j; j<=5; j++)
+        {
+            for(k; k<=5; k++)
+                printf("%d%d%d\n",i,j,k);
+        }
+    }
+    return 0;
+} 
