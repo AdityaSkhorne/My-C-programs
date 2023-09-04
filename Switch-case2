@@ -1,0 +1,27 @@
+
+#include<stdio.h>
+
+int main()
+{
+    char ch;
+    printf("Enter any one of the alphabets a,b, or c :- ");
+    scanf("%c",&ch);
+    switch(ch)
+    {
+    case'a':
+        case'A':
+                printf("a is in apple\n");
+        break;
+    case'b':
+        case'B':
+                printf("b is in brain\n");
+    case'c':
+        case'C':
+                printf("c is in cookie\n");
+    default:
+        printf("wish you knew what are alphabets\n");
+
+        return 0;
+    }
+}
+
