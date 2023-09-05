@@ -1,0 +1,90 @@
+//Menu driven program 
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+    int choice,num,i,fact;
+    while(1)
+    {
+        //Display the menu options
+        printf("\n1.Factorial\n");
+        printf("2.Prime\n");
+        printf("3.Odd/Even\n");
+        printf("4.Exit\n");
+        printf("Your Choice? ");
+        
+        //Read the user's choice
+        scanf("%d",&choice);
+        
+        //Validate the user's choice
+        if(choice < 1 || choice > 4)
+        {
+            printf("Wrong choice!\a\n");
+            continue; //go back to the beginning of the loop
+        }
+        
+        //Exit the program if the user chooses 4
+        if(choice == 4)
+        {
+            exit(0);
+        }
+        
+        //Ask the user to enter a number
+        printf("\nEnter number: ");
+        scanf("%d",&num);
+        
+        //Validate the user's number
+        if(num < 0)
+        {
+            printf("Invalid number!\n");
+            continue; //go back to the beginning of the loop
+        }
+        
+        //Perform the corresponding operation based on the user's choice
+        switch(choice)
+        {
+            case 1: //Factorial
+                fact = 1;
+                for(i = 1; i <= num; i++)
+                {
+                    fact = fact * i;
+                }
+                printf("Factorial value = %d\n",fact);  
+                break;
+                
+            case 2: //Prime
+                for(i = 2; i < num; i++)
+                {
+                    if(num % i == 0) 
+                    {
+                        printf("Not a prime number\n"); 
+                        break;
+                    }
+                }
+                if(i == num)
+                {
+                    printf("Prime number\n");
+                }
+                break;
+                
+            case 3: //Odd/Even
+                if(num % 2 == 0)
+                {
+                    printf("Even number\n");
+                }
+                else
+                {
+                    printf("Odd number\n");
+                }
+                break;
+                
+            default:
+                //This should never happen
+                printf("Something went wrong!\n");          
+                
+        }
+    }
+    return 0;
+}
+    
