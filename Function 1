@@ -1,0 +1,30 @@
+#include<stdio.h>
+void italy();
+void brazil();
+void USA();
+int main()
+{
+
+    printf("I am in main\n");
+    italy();
+    brazil();
+    USA();
+    return 0;
+    
+
+}
+
+   void italy()
+   {
+       printf("I am in italy\n");
+   }
+   void brazil()
+   {
+    printf("I am in brazil\n");
+   }
+   
+   void USA()
+   {
+   printf("I am in USA\n");
+   }
+   
