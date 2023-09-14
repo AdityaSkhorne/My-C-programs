@@ -1,0 +1,51 @@
+//program to display the data of students like roll number, name, mobile number, age, gender, address, and seat number:
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define a structure to store student data
+typedef struct student {
+    int roll_no;
+    char name[50];
+    char mobile[11]; // Changed the size to 11 to include the null terminator
+    int age;
+    char gender;
+    char address[100];
+    int seat_no;
+} student;
+
+// Declare a function to display student data
+void display(student s);
+
+// Main function
+int main() {
+    // Declare an array of students
+    student students[5];
+
+    // Initialize the array with some sample data
+    students[0] = (student) {1, "Rajesh", "9876543210", 19, 'M', "Mumbai", 101};
+    students[1] = (student) {2, "Priya", "8765432109", 18, 'F', "Pune", 102};
+    students[2] = (student) {3, "Ravi", "7654321098", 20, 'M', "Nagpur", 103};
+    students[3] = (student) {4, "Anjali", "6543210987", 19, 'F', "Nashik", 104};
+    students[4] = (student) {5, "Vikas", "5432109876", 21, 'M', "Kolhapur", 105};
+
+    // Display the data of each student using a loop
+    for (int i = 0; i < 5; i++) {
+        display(students[i]);
+        printf("\n");
+    }
+
+    // Exit the program
+    return 0;
+}
+
+// Define the function to display student data
+void display(student s) {
+    // Print the data in a formatted way
+    printf("Roll Number: %d\n", s.roll_no);
+    printf("Name: %s\n", s.name);
+    printf("Mobile Number: %s\n", s.mobile);
+    printf("Age: %d\n", s.age);
+    printf("Gender: %c\n", s.gender);
+    printf("Address: %s\n", s.address);
+    printf("Seat Number: %d\n", s.seat_no);
+}
