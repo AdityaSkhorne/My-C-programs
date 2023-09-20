@@ -1,0 +1,24 @@
+//Function which returns sum, average and standard derivation
+#include<stdio.h>
+#include<math.h>
+void stats(int *,double *, double *);
+int main()
+{
+    int sum;
+    double avg,stdev;
+    stats(&sum,&avg,&stdev);
+    printf("sum=%d\n Average=%lf\n Standard derivation=%lf\n",sum,avg,stdev);
+    return 0;
+    
+}
+
+void stats(int *sum,double *avg, double *stdev)
+
+{
+  int n1,n2,n3,n4,n5;
+  printf("\nenter 5 numbers:- ");
+  scanf("%d%d%d%d%d",&n1,&n2,&n3,&n4,&n5);
+  *sum=n1+n2+n3+n4+n5;
+  *avg=(double)*sum/5;
+  *stdev=sqrt((pow((n1-*avg),2.0)+pow((n2-*avg),2.0)+pow((n3-*avg),2.0)+pow((n4-*avg),2.0)+pow((n5-*avg),2.0))/4);
+}
