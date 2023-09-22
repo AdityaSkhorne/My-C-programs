@@ -1,0 +1,16 @@
+#include<stdio.h>
+int main()
+{
+    int a,b,add,sub;
+    printf("enter the value of a--> " );
+    scanf("%d",&a);
+    printf("enter the value of b--> ");
+    scanf("%d",&b);
+    add=a+b;
+    sub=a-b;
+    printf("the addition of %d and %d is %d\n ",a,b,add);
+    printf("the subtraction of %d and %d is %d",a,b,sub);
+
+    return 0;
+
+}
