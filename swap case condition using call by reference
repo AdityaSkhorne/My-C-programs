@@ -1,0 +1,22 @@
+//swap case condition using call by reference
+#include<stdio.h>
+void swapr(int*,int*);
+int main()
+{
+     int a,b;
+     printf("enter values for a and b :- \n");
+     scanf("%d %d",&a,&b);
+     swapr(&a,&b);
+     printf("a=%d b=%d\n",a,b);
+     return 0;
+
+}
+
+void swapr(int *x,int *y)
+{
+    int t;
+    t=*x;
+    *x=*y;
+    *y=t;
+}
+    
