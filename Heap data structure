@@ -1,0 +1,91 @@
+#include <iostream>
+using namespace std;
+
+class Student {
+    int marks[10];
+    int n;
+
+public:
+    void readMarks();
+    void displayMarks();
+    void buildHeap(bool isMaxHeap);
+    void printExtreme(bool isMax);
+};
+
+void Student::readMarks() {
+    cout << "Enter the number of marks: ";
+    cin >> n;
+    cout << "Enter marks: ";
+    for (int i = 0; i < n; i++) {
+        cin >> marks[i];
+    }
+}
+
+void Student::displayMarks() {
+    cout << "Marks: ";
+    for (int i = 0; i < n; i++) {
+        cout << marks[i] << " ";
+    }
+    cout << endl;
+}
+
+void Student::buildHeap(bool isMaxHeap) {
+    int startIdx = n / 2 - 1;
+    for (int i = startIdx; i >= 0; i--) {
+        int current = i;
+        int child = 2 * i + 1;
+        if (isMaxHeap) {
+            while (child < n) {
+                if (child + 1 < n && marks[child + 1] > marks[child]) {
+                    child++;
+                }
+                if (marks[child] > marks[current]) {
+                    swap(marks[child], marks[current]);
+                    current = child;
+                    child = 2 * current + 1;
+                } else {
+                    break;
+                }
+            }
+        } else {
+            while (child < n) {
+                if (child + 1 < n && marks[child + 1] < marks[child]) {
+                    child++;
+                }
+                if (marks[child] < marks[current]) {
+                    swap(marks[child], marks[current]);
+                    current = child;
+                    child = 2 * current + 1;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+}
+
+void Student::printExtreme(bool isMax) {
+    if (isMax) {
+        cout << "Maximum mark: " << marks[0] << endl;
+    } else {
+        cout << "Minimum mark: " << marks[0] << endl;
+    }
+}
+
+int main() {
+    Student s;
+    s.readMarks();
+    s.displayMarks();
+    
+    s.buildHeap(true);
+    cout << "Building max heap..." << endl;
+    s.displayMarks();
+    s.printExtreme(true);
+    
+    s.buildHeap(false);
+    cout << "Building min heap..." << endl;
+    s.displayMarks();
+    s.printExtreme(false);
+    
+    return 0;
+}
